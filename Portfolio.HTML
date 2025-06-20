@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>رامي عامر - معرض الأعمال</title>
+    <title data-en="Ramy Amer- potfolio" data-ar="رامي عامر - معرض الاعمال ">رامي عامر - معرض الأعمال</title>
+    <link rel="icon" href="favicon.png" type="image/png">
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
@@ -460,7 +462,7 @@
                          <a class="nav-link active" aria-current="page" href="#" data-en="Portfolio" data-ar="معرض الأعمال">معرض الأعمال</a> 
                     </li>
                      <li class="nav-item">
-                         <a class="nav-link" href="Ramy C.V.pdf" target="_blank" data-en="Download CV" data-ar="تحميل السيرة الذاتية">تحميل السيرة الذاتية</a>
+                         <a class="nav-link" href="Ramy C.V (2).pdf" target="_blank" data-en="Download CV" data-ar="تحميل السيرة الذاتية">تحميل السيرة الذاتية</a>
                     </li>
                     <li class="nav-item">
                         <button class="btn btn-sm btn-primary ms-2" id="language-switcher" data-en-text="العربية" data-ar-text="English">English</button>
@@ -682,31 +684,33 @@
 
 
             // Function to switch language
-            const switchLanguage = () => {
-                 if (htmlTag.lang === 'ar') {
-                    // Switch to English
-                    arabicContent.classList.add('d-none');
-                    englishContent.classList.remove('d-none');
-                    htmlTag.lang = 'en';
-                    htmlTag.dir = 'ltr'; // Set overall document direction
-                    switcherButton.textContent = switcherButton.dataset.arText; // Change button text to Arabic
-                    switcherButton.classList.remove('btn-primary');
-                    switcherButton.classList.add('btn-secondary');
-                    updateNavLinks('en'); // Update navbar links to English
+// Function to switch language (Corrected Logic)
+            const switchLanguage = () => {
+                 if (htmlTag.lang === 'ar') {
+                    // Switch to English
+                    arabicContent.classList.add('d-none');
+                    englishContent.classList.remove('d-none');
+                    htmlTag.lang = 'en';
+                    htmlTag.dir = 'ltr';
+                    // ✅ التصحيح: عندما تكون الصفحة إنجليزية، يجب أن يظهر على الزر كلمة "العربية"
+                    switcherButton.textContent = switcherButton.dataset.enText; 
+                    switcherButton.classList.remove('btn-primary');
+                    switcherButton.classList.add('btn-secondary');
+                    updateNavLinks('en'); 
 
-                } else {
-                    // Switch to Arabic
-                    englishContent.classList.add('d-none');
-                    arabicContent.classList.remove('d-none');
-                    htmlTag.lang = 'ar';
-                    htmlTag.dir = 'rtl'; // Set overall document direction
-                    switcherButton.textContent = switcherButton.dataset.enText; // Change button text to English
-                    switcherButton.classList.remove('btn-secondary');
-                    switcherButton.classList.add('btn-primary');
-                    updateNavLinks('ar'); // Update navbar links to Arabic
-                }
-            };
-
+                } else {
+                    // Switch to Arabic
+                    englishContent.classList.add('d-none');
+                    arabicContent.classList.remove('d-none');
+                    htmlTag.lang = 'ar';
+                    htmlTag.dir = 'rtl'; 
+                    // ✅ التصحيح: عندما تكون الصفحة عربية، يجب أن يظهر على الزر كلمة "English"
+                    switcherButton.textContent = switcherButton.dataset.arText; 
+                    switcherButton.classList.remove('btn-secondary');
+                    switcherButton.classList.add('btn-primary');
+                    updateNavLinks('ar'); 
+                }
+            };
 
              // Add event listener to the switcher button
              switcherButton.addEventListener('click', switchLanguage);
